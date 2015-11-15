@@ -16,7 +16,7 @@ import ui.menu.GMenu;
  * run : java Main
  * @author Gourgoulhon
  */
-public class Main extends Application {
+public class FrOG extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
