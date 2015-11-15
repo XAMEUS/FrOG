@@ -1,8 +1,6 @@
 package ui.menu;
 
-import java.awt.Desktop;
 import java.io.File;
-import java.net.URI;
 import java.util.Optional;
 
 import core.automatons.Rules;
@@ -271,28 +269,14 @@ public class GMenu extends MenuBar {
 		welcome.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-			        try {
-			            desktop.browse(new URI("http://xameus.github.io/FrOG/welcome.html"));
-			        } catch (Exception e) {
-			            e.printStackTrace();
-			        }
-			    }
+				Controller.application.getHostServices().showDocument("http://xameus.github.io/FrOG/welcome.html");
 			}
 		});
 		MenuItem about = new MenuItem("Quickstart");
 		about.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
-			        try {
-			            desktop.browse(new URI("http://xameus.github.io/FrOG/quickstart.html"));
-			        } catch (Exception e) {
-			            e.printStackTrace();
-			        }
-			    }
+				Controller.application.getHostServices().showDocument("http://xameus.github.io/FrOG/quickstart.html");
 			}
 		});
 		menu.getItems().add(welcome);

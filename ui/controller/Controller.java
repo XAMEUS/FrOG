@@ -23,6 +23,7 @@ import core.states.ImmigrationState;
 import core.states.LifeState;
 import core.states.QuadLifeState;
 import core.states.State;
+import javafx.application.Application;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
@@ -38,7 +39,8 @@ import ui.utils.Dialogs;
  * @author Gourgoulhon
  */
 public class Controller {
-
+	
+	public static Application application;
 	public static Stage primaryStage;
 	public static RulesWrapper rules = new RulesWrapper(Rules.QUADLIFE);
 	public static  NormalGrid<?, ?, ?> grid = new DefaultGrid(50, 80, QuadLifeState.DEAD, 0.5);

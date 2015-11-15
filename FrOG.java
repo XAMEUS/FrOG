@@ -26,6 +26,7 @@ public class FrOG extends Application {
 			GInfo bot = new GInfo();
 			Controller.GOFDrawing = new GDrawing();
 			Controller.infos = bot;
+			Controller.application = this;
 			root.setTop(menuBar);
 			root.setCenter(Controller.GOFDrawing);
 			root.setBottom(bot);
@@ -35,7 +36,6 @@ public class FrOG extends Application {
 			primaryStage.getIcons().add(new Image("pic/frog.png"));
 			primaryStage.setTitle("FrOG");
 			primaryStage.show();
-			
 			AnimationTimer timer = new AnimationTimer() {
 	            @Override
 	            public void handle(long now) {
