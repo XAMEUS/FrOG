@@ -5,6 +5,14 @@ import core.cell.Cell;
 import core.cell.NormalCell;
 import core.states.State;
 
+/**
+ * Abstract normal grid
+ * @author Gourgoulhon
+ *
+ * @param <S> State
+ * @param <N> Direction
+ * @param <C> Cell
+ */
 public abstract class NormalGrid<S extends State, N extends Enum<N>, C extends Cell<?, N>> implements Grid<S, N, C> {
 
 	protected Cell<?, ?>[][] grid;
@@ -12,18 +20,21 @@ public abstract class NormalGrid<S extends State, N extends Enum<N>, C extends C
 	public final int COLUMNS;
 	public int generation;
 	public final State defaultState;
+	protected final double ratio;
 
 	/**
 	 * Build a grid.
 	 * @param rows size
 	 * @param columns size
 	 * @param state, type of state
+	 * @param ratio ratio of living cells
 	 */
-	public NormalGrid(int rows, int columns, State state) {
+	public NormalGrid(int rows, int columns, State state, double ratio) {
 		this.ROWS = rows;
 		this.COLUMNS = columns;
 		this.grid = new NormalCell[rows][columns];
 		this.defaultState = state;
+		this.ratio = ratio;
 		this.init();
 	}
 	

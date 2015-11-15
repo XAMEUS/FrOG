@@ -8,10 +8,14 @@ import core.states.QuadLifeState;
 import core.states.State;
 import ui.controller.Controller;
 
+/**
+ * Default normal grid.
+ * @author Gourgoulhon
+ */
 public class DefaultGrid extends NormalGrid<State, Direction, NormalCell<State, Direction>> {
 
-	public DefaultGrid(int rows, int columns, State s) {
-		super(rows, columns, s);
+	public DefaultGrid(int rows, int columns, State s, double ratio) {
+		super(rows, columns, s, ratio);
 	}
 
 	@Override
@@ -19,12 +23,12 @@ public class DefaultGrid extends NormalGrid<State, Direction, NormalCell<State, 
 		for (int i = 0; i < ROWS; i++)
 			for (int j = 0; j < COLUMNS; j++) {
 				if (this.defaultState instanceof LifeState)
-					this.grid[i][j] = new NormalCell<LifeState, Direction>((Math.random()<0.5)? LifeState.ALIVE:LifeState.DEAD, Direction.values().length);
+					this.grid[i][j] = new NormalCell<LifeState, Direction>((Math.random()<this.ratio)? LifeState.ALIVE:LifeState.DEAD, Direction.values().length);
 				else if (this.defaultState instanceof ImmigrationState)
-					this.grid[i][j] = new NormalCell<ImmigrationState, Direction>((Math.random()<0.5)?
+					this.grid[i][j] = new NormalCell<ImmigrationState, Direction>((Math.random()<this.ratio)?
 							((Math.random()<0.5)? ImmigrationState.ALIVE1:ImmigrationState.ALIVE2):ImmigrationState.DEAD, Direction.values().length);
 				else if (this.defaultState instanceof QuadLifeState)
-					this.grid[i][j] = new NormalCell<QuadLifeState, Direction>((Math.random()<0.5)?
+					this.grid[i][j] = new NormalCell<QuadLifeState, Direction>((Math.random()<this.ratio)?
 							QuadLifeState.values()[(int)(Math.random() * 4 + 1)]:QuadLifeState.DEAD, Direction.values().length);
 				this.grid[i][j].setRules(Controller.rules);
 			}

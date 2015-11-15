@@ -41,7 +41,7 @@ public class Controller {
 
 	public static Stage primaryStage;
 	public static RulesWrapper rules = new RulesWrapper(Rules.QUADLIFE);
-	public static  NormalGrid<?, ?, ?> grid = new DefaultGrid(50, 80, QuadLifeState.DEAD);
+	public static  NormalGrid<?, ?, ?> grid = new DefaultGrid(50, 80, QuadLifeState.DEAD, 0.5);
 	//public static NormalGrid<?, ?, ?> grid = new HexGrid(4, 4, Rules.CONWAY);
 	//public static NormalGrid<?, ?, ?> grid = new TriGrid(60, 60);
 	public static GDrawing GOFDrawing;
@@ -111,8 +111,8 @@ public class Controller {
 	        else
 	        	state = LifeState.DEAD;
 	        if (line.contains(HexGrid.class.getName()))
-	        	Controller.grid = new HexGrid(rows, columns, state);
-	        else Controller.grid = new DefaultGrid(rows, columns, state);
+	        	Controller.grid = new HexGrid(rows, columns, state, 0);
+	        else Controller.grid = new DefaultGrid(rows, columns, state, 0);
     		int i = 0;
     		
     		line = br.readLine();

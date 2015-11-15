@@ -6,8 +6,8 @@ import core.states.State;
 
 public class HexGrid extends DefaultGrid {
 
-	public HexGrid(int rows, int columns, State state) {
-		super((rows % 2 != 0) ? ((rows == 1) ? 1 : rows - 1) : rows, columns, state);
+	public HexGrid(int rows, int columns, State state, double ratio) {
+		super((rows % 2 != 0) ? ((rows == 1) ? 1 : rows - 1) : rows, columns, state, ratio);
 	}
 
 	@Override @SuppressWarnings("unchecked")

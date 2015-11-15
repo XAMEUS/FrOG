@@ -6,8 +6,8 @@ import core.states.State;
 
 public class TriGrid extends DefaultGrid {
 
-	public TriGrid(int rows, int columns, State state) {
-		super(rows, columns, state);
+	public TriGrid(int rows, int columns, State state, double ratio) {
+		super(rows, columns, state, ratio);
 	}
 	
 	@Override @SuppressWarnings("unchecked")

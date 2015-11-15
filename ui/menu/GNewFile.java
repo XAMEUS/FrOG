@@ -21,8 +21,12 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import ui.controller.Controller;
 import ui.utils.NumberField;
 
@@ -36,6 +40,9 @@ public class GNewFile {
 
 		Dialog<String[]> dialog = new Dialog<>();
 		dialog.setTitle("Create a new Grid");
+		dialog.initOwner(Controller.primaryStage);
+		Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+		stage.getIcons().add(new Image("pic/frog.png"));
 
 		ButtonType createType = new ButtonType("Create", ButtonData.OK_DONE);
 		dialog.getDialogPane().getButtonTypes().addAll(createType, ButtonType.CANCEL);
@@ -76,6 +83,15 @@ public class GNewFile {
 		grid.add(rows, 0, 2);
 		grid.add(columns, 1, 2);
 		
+		Slider ratio = new Slider(0, 1, 0.5);
+		Text ratioText = new Text("Life amount : 50%");
+		grid.add(ratioText, 0, 3);
+		grid.add(ratio, 1, 3);
+		
+		ratio.valueProperty().addListener((observable, oldValue, newValue) -> {
+			ratioText.setText("Life amount : " + (((int)(newValue.doubleValue()*1000))/1000.0) + "%");
+		});
+		
 		ChangeListener<String> check = new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -94,7 +110,13 @@ public class GNewFile {
 
 		dialog.setResultConverter(dialogButton -> {
 			if (dialogButton == createType) {
-				return new String[] {rows.getText(), columns.getText(), comboBox.getValue(), ((RadioButton)(type.getSelectedToggle())).getText()};
+				return new String[] {
+						rows.getText(),
+						columns.getText(),
+						comboBox.getValue(),
+						((RadioButton)(type.getSelectedToggle())).getText(),
+						""+ratio.getValue()
+						};
 			}
 			return null;
 		});
@@ -110,8 +132,8 @@ public class GNewFile {
 	        else
 	        	state = LifeState.DEAD;
 			if (d[3].equals("Squares"))
-				Controller.grid = new DefaultGrid(Integer.valueOf(d[0]), Integer.valueOf(d[1]), state);
-			else Controller.grid = new HexGrid(Integer.valueOf(d[0]), Integer.valueOf(d[1]), state);
+				Controller.grid = new DefaultGrid(Integer.valueOf(d[0]), Integer.valueOf(d[1]), state, Double.valueOf(d[4]));
+			else Controller.grid = new HexGrid(Integer.valueOf(d[0]), Integer.valueOf(d[1]), state, Double.valueOf(d[4]));
 			Controller.refresh();
 		});
 		
