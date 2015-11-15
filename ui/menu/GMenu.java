@@ -12,6 +12,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.ButtonBar.ButtonData;
+import javafx.scene.image.Image;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
@@ -27,6 +28,7 @@ import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import ui.controller.Controller;
 import ui.utils.NumberField;
 
@@ -149,6 +151,8 @@ public class GMenu extends MenuBar {
 				
 				Dialog<String> dialog = new Dialog<>();
 				dialog.setTitle("Delay");
+				Stage stage = (Stage) dialog.getDialogPane().getScene().getWindow();
+				stage.getIcons().add(new Image("pic/frog.png"));
 				
 				ButtonType okButtonType = new ButtonType("Ok", ButtonData.OK_DONE);
 				dialog.getDialogPane().getButtonTypes().addAll(okButtonType, ButtonType.CANCEL);
