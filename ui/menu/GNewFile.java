@@ -84,12 +84,12 @@ public class GNewFile {
 		grid.add(columns, 1, 2);
 		
 		Slider ratio = new Slider(0, 1, 0.5);
-		Text ratioText = new Text("Life amount : 50%");
+		Text ratioText = new Text("Life amount : 0.5");
 		grid.add(ratioText, 0, 3);
 		grid.add(ratio, 1, 3);
 		
 		ratio.valueProperty().addListener((observable, oldValue, newValue) -> {
-			ratioText.setText("Life amount : " + (((int)(newValue.doubleValue()*1000))/1000.0) + "%");
+			ratioText.setText("Life amount : " + (((int)(newValue.doubleValue()*1000))/1000.0));
 		});
 		
 		ChangeListener<String> check = new ChangeListener<String>() {

@@ -233,7 +233,7 @@ public class GMenu extends MenuBar {
 		});
 		clean.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.SHIFT_DOWN));
 		
-		Menu rules = new Menu("rules");
+		Menu rules = new Menu("Rules");
 		ToggleGroup g = new ToggleGroup();
 		for (Rules r : Rules.values()) {
 			RadioMenuItem e = new RadioMenuItem(r.getName());
