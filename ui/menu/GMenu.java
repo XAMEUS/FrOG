@@ -274,21 +274,21 @@ public class GMenu extends MenuBar {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
-			            desktop.browse(new URI("http://xameus.github.io/LogoTurtle/welcome.html"));
+			            desktop.browse(new URI("http://xameus.github.io/FrOG/welcome.html"));
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }
 			    }
 			}
 		});
-		MenuItem about = new MenuItem("About");
+		MenuItem about = new MenuItem("Quickstart");
 		about.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 			    if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			        try {
-			            desktop.browse(new URI("http://xameus.github.io/LogoTurtle/features.html"));
+			            desktop.browse(new URI("http://xameus.github.io/FrOG/quickstart.html"));
 			        } catch (Exception e) {
 			            e.printStackTrace();
 			        }
